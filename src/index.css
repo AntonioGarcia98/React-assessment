@@ -1,13 +1,18 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: mplus2-regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bs-primary-rgb: 	61,54,109;
+  --bs-primary: #3d366d;;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: mplus2-regular;
+  src: url(/src/assests/fonts/MPLUS2-Regular.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: play-bold;
+  src: url(/src/assests/fonts/Play-Bold.ttf) format('opentype');
 }
