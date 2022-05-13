@@ -10,7 +10,7 @@ export default function NavbarItem(props) {
     <>
       <Navbar bg="dark">
         {showReturn ? (
-          <div onClick={() => history.push("/")}>
+          <div className="d-flex" onClick={() => history.push("/")}>
             <FaAngleLeft className="icon" />
             <span>Return</span>{" "}
           </div>

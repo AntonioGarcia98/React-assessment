@@ -5,7 +5,6 @@ import "./../styles/MainJumbotron.css";
 
 function MainJumbotron(props) {
   const { post } = props;
-  console.log(post);
   return (
     <div className="bg-light p-5 rounded-lg">
       <h1 className="title">

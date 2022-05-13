@@ -5,3 +5,9 @@
 .strong{
     font-family: play-bold;
 }
+
+.link{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+}

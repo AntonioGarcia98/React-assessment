@@ -64,10 +64,9 @@ function Enhancedthead(props) {
         {headCells.map((headCell) => (
           <td
             key={headCell.id}
-            sortDirection={orderBy === headCell.id ? order : false}
           >
             <div
-              active={orderBy === headCell.id}
+            
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
@@ -107,7 +106,7 @@ export default function EnhancedTable(props) {
         {stableSort(props.parameters, getComparator(order, orderBy)).map(
           (row, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td>{row.displayName}</td>
                 <td>{new Date(row.lastUpdated).toLocaleDateString()}</td>
                 <td>{row.lastValue}</td>

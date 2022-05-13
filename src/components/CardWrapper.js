@@ -6,7 +6,7 @@ export default function CardWrapper(props) {
 
   return (
     <>
-      <MediaCard info={props.info} history={history}></MediaCard>{" "}
+      <MediaCard key={props.info.id} info={props.info} history={history}></MediaCard>{" "}
     </>
   );
 }

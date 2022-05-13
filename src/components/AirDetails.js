@@ -4,7 +4,7 @@ import { ChartVertical } from "./ChartVertical";
 import axios from "axios";
 import MainJumbotron from "./MainJumbotron";
 import TableData from "./TableData";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card,Alert } from "react-bootstrap";
 import "./../App.css";
 import LoadingSpinner from "./LoadingSpinner";
 import NavbarItem from "./NavbarItem";
@@ -20,24 +20,21 @@ const AirDetails = (props) => {
   const [averageYear, setAverageYear] = useState([]);
 
   useEffect(() => {
-    let one = `https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/locations/${locationId}/`;
-    let two = `https://docs.openaq.org/v2/averages?sort=asc&order_by=dow&temporal=dow&parameter=pm1&spatial=location&location=${locationId}`;
-    let three = `https://docs.openaq.org/v2/averages?sort=asc&order_by=moy&temporal=moy&parameter=pm1&spatial=location&location=${locationId}`;
-    let four = `https://docs.openaq.org/v2/averages?parameter=pm1&temporal=day&limit=10000&date_from=2020-05-12T12%3A12%3A11.000Z&date_to=2022-05-12T12%3A12%3A11.000Z&location=${locationId}&spatial=location`;
+    let one = `https://u50g7n0cbj.execute-api.us-east-1.amazonaws.com/v2/locations/${locationId}/`,
+     two = `https://docs.openaq.org/v2/averages?sort=asc&order_by=dow&temporal=dow&parameter=pm1&spatial=location&location=${locationId}`,
+     three = `https://docs.openaq.org/v2/averages?sort=asc&order_by=moy&temporal=moy&parameter=pm1&spatial=location&location=${locationId}`;
     setIsLoading(true);
     const requestOne = axios.get(one),
       requestTwo = axios.get(two),
-      requestThree = axios.get(three),
-      requestFour = axios.get(four);
+      requestThree = axios.get(three);
 
     axios
-      .all([requestOne, requestTwo, requestThree, requestFour])
+      .all([requestOne, requestTwo, requestThree])
       .then(
         axios.spread((...responses) => {
-          const responseOneData = responses[0].data;
-          const responseTwoData = responses[1].data;
-          const responseThreeData = responses[2].data;
-          const responseFourData = responses[3].data;
+          const responseOneData = responses[0].data,
+           responseTwoData = responses[1].data,
+           responseThreeData = responses[2].data;
           setAverageWeek(responseTwoData.results);
           setAverageYear(responseThreeData.results);
           setLocation(responseOneData.results[0]);
@@ -121,7 +118,9 @@ const AirDetails = (props) => {
         ) : location !== undefined && location ? (
           generateLocationJSX(location)
         ) : (
-          <div>Not found data</div>
+          <Alert variant="primary" className="mt-4">
+              Not elements found
+            </Alert>
         )}
       </main>
     </>

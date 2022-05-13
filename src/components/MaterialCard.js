@@ -60,7 +60,7 @@ export default function MediaCard(props) {
           </Row>
         </div>
 
-        <Card.Link onClick={() => history.push(`/${id}`)}>
+        <Card.Link onClick={() => history.push(`/${id}`)} className="link">
           More information
         </Card.Link>
       </Card.Body>
